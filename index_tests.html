@@ -50,17 +50,20 @@
         <div>Loading, please wait...</div>
     </div>
 
+    <!--<a-scene vr-mode-ui="enabled: false;"
+             renderer="logarithmicDepthBuffer: true;"
+             embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>-->
+
     <a-scene vr-mode-ui="enabled: false;"
-        renderer='antialias: true; alpha: true; precision: medium;'
+        renderer='antialias: true; alpha: true; precision: medium; logarithmicDepthBuffer: true;'
         embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
         
-        <a-assets>
+        <!--<a-assets>
             <video src="./assets/ImageVideo/mov_bbb.mp4"
                     preload="auto" id="vid" response-type="arraybuffer" loop
                     crossorigin webkit-playsinline autoplay muted playsinline>
             </video>
         </a-assets>
-
         <a-nft 
             videohandler
             type='nft' smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
@@ -73,7 +76,7 @@
                 width='300'
                 height='175'>
             </a-video>
-        </a-nft>
+        </a-nft>-->
     
             
 
@@ -82,7 +85,7 @@
         url="https://arjs-cors-proxy.herokuapp.com/https://raw.githubusercontent.com/statperi/location-based-ar-tutorial/tree/main/assets/ImageVideo/Pinball/pinball"
         url="https://arjs-cors-proxy.herokuapp.com/https://rawcdn.githack.com/statperi/location-based-ar-tutorial/tree/main/assets/ImageVideo/Pinball/pinball"-->
 
-        <!--<a-nft 
+        <a-nft 
             type='nft'
             url="assets/ImageVideo/Grattan/grattan_house"
             smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
@@ -91,8 +94,7 @@
                       rotation="0 180 0"
                       scale="15 15 15"
                       animation-mixer />
-        </a-nft>-->
-
+        </a-nft>
         <a-entity camera></a-entity>
     </a-scene>
 </body>
