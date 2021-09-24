@@ -3,9 +3,8 @@
     "",
     "\\assets",
     "\\assets\\bear",
-    "\\assets\\ImageVideo",
-    "\\assets\\ImageVideo\\Grattan"
+    "\\assets\\ImageVideo"
   ],
-  "SelectedNode": "\\locationBasedScript.js",
+  "SelectedNode": "\\assets\\ImageVideo\\Grattan",
   "PreviewInSolutionExplorer": false
 }
