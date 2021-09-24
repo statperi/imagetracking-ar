@@ -51,48 +51,46 @@
     </div>
 
     <a-scene vr-mode-ui="enabled: false;"
-        renderer='antialias: true; alpha: true; precision: medium;'
-        embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
-        
+             renderer='antialias: true; alpha: true; precision: medium;'
+             embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+
         <a-assets>
             <video src="./assets/ImageVideo/mov_bbb.mp4"
-                    preload="auto" id="vid" response-type="arraybuffer" loop
-                    crossorigin webkit-playsinline autoplay muted playsinline>
+                   preload="auto" id="vid" response-type="arraybuffer" loop
+                   crossorigin webkit-playsinline autoplay muted playsinline>
             </video>
         </a-assets>
 
-        <a-nft 
-            videohandler
-            type='nft' smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
-            url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex'
-            <!--url='https://arjs-cors-proxy.herokuapp.com/https://rawcdn.githack.com/statperi/location-based-ar-tutorial/tree/main/assets/ImageVideo/Pinball/pinball'-->
-            >
-            <a-video 
-                src="#vid"
-                position='50 150 -100'
-                rotation='90 0 180'
-                width='300'
-                height='175'>
+
+        <!--url='https://arjs-cors-proxy.herokuapp.com/https://rawcdn.githack.com/statperi/location-based-ar-tutorial/tree/main/assets/ImageVideo/Pinball/pinball'-->
+
+        <a-nft videohandler
+               type='nft' smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
+               url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex'>
+            <a-video src="#vid"
+                     position='50 150 -100'
+                     rotation='90 0 180'
+                     width='300'
+                     height='175'>
             </a-video>
         </a-nft>
-    
-            
+
+
 
         <!--url='./assets/ImageVideo/Pinball/pinball'
-        url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
-        url="https://arjs-cors-proxy.herokuapp.com/https://raw.githubusercontent.com/statperi/location-based-ar-tutorial/tree/main/assets/ImageVideo/Pinball/pinball"
-        url="https://arjs-cors-proxy.herokuapp.com/https://rawcdn.githack.com/statperi/location-based-ar-tutorial/tree/main/assets/ImageVideo/Pinball/pinball"-->
+    url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
+    url="https://arjs-cors-proxy.herokuapp.com/https://raw.githubusercontent.com/statperi/location-based-ar-tutorial/tree/main/assets/ImageVideo/Pinball/pinball"
+    url="https://arjs-cors-proxy.herokuapp.com/https://rawcdn.githack.com/statperi/location-based-ar-tutorial/tree/main/assets/ImageVideo/Pinball/pinball"-->
+        <!--<a-nft
+        type='nft'
+        url="assets/ImageVideo/Grattan/grattan_house"
+        smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
 
-        <!--<a-nft 
-            type='nft'
-            url="assets/ImageVideo/Grattan/grattan_house"
-            smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
-
-            <a-entity gltf-model="assets/bear/scene.gltf"
-                      rotation="0 180 0"
-                      scale="15 15 15"
-                      animation-mixer />
-        </a-nft>-->
+        <a-entity gltf-model="assets/bear/scene.gltf"
+                  rotation="0 180 0"
+                  scale="15 15 15"
+                  animation-mixer />
+    </a-nft>-->
 
         <a-entity camera></a-entity>
     </a-scene>
