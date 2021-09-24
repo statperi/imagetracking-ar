@@ -1,6 +1,4 @@
 <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
-
-<!--<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>-->
 <script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'></script>
 
 <script>
@@ -55,18 +53,19 @@
              embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
 
         <a-assets>
-            <video src="./assets/ImageVideo/mov_bbb.mp4"
+            <video src="./assets/ImageVideo/cat.mp4"
                    preload="auto" id="vid" response-type="arraybuffer" loop
-                   crossorigin webkit-playsinline autoplay muted playsinline>
+                   webkit-playsinline autoplay muted playsinline>
             </video>
         </a-assets>
 
 
         <!--url='https://arjs-cors-proxy.herokuapp.com/https://rawcdn.githack.com/statperi/location-based-ar-tutorial/tree/main/assets/ImageVideo/Pinball/pinball'-->
+        <!--url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex'>-->
 
         <a-nft videohandler
                type='nft' smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
-               url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex'>
+               url='./assets/ImageVideo/Pinball/pinball'>
             <a-video src="#vid"
                      position='50 150 -100'
                      rotation='90 0 180'
