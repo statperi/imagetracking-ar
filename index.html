@@ -55,7 +55,7 @@
         <a-assets>
             <video src="./assets/ImageVideo/cat.mp4"
                    preload="auto" id="vid" response-type="arraybuffer" loop
-                   webkit-playsinline autoplay muted playsinline>
+                   crossorigin webkit-playsinline autoplay muted playsinline>
             </video>
         </a-assets>
 
@@ -67,7 +67,8 @@
 
         <a-nft videohandler
                type='nft' smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
-               url='https://github.com/statperi/imagetracking-ar/tree/main/assets/ImageVideo/Pinball'>
+               url='https://github.com/statperi/imagetracking-ar/tree/main/assets/ImageVideo/Pinball'
+               crossorigin>
             <a-video src="#vid"
                      position='50 150 -100'
                      rotation='90 0 180'
