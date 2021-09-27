@@ -1,6 +1,27 @@
 <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
 <script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'></script>
 
+<script>
+    window.onload = function () {
+        AFRAME.registerComponent('videohandler', {
+            init: function () {
+                var marker = this.el;
+
+                this.vid = document.querySelector("#vid");
+
+                marker.addEventListener('markerFound', function () {
+                    this.vid.play();
+                }.bind(this));
+
+                marker.addEventListener('markerLost', function () {
+                    this.vid.pause();
+                    this.vid.currentTime = 0;
+                }.bind(this));
+            }
+        });
+    };
+</script>
+
 <style>
     .arjs-loader {
         height: 100%;
@@ -27,17 +48,22 @@
         <div>Loading, please wait...</div>
     </div>
 
-    <a-scene 
-        vr-mode-ui="enabled: false;"
-        renderer='logarithmicDepthBuffer: true;'
-        embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+    <a-scene vr-mode-ui="enabled: false;"
+             renderer='antialias: true; alpha: true; precision: medium;'
+             embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+
+        <a-assets>
+            <video src="./assets/ImageVideo/cat.mp4"
+                   preload="auto" id="vid" response-type="arraybuffer" loop
+                   crossorigin webkit-playsinline autoplay muted playsinline>
+            </video>
+        </a-assets>
 
         <!--url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/statperi/imagetracking-ar/main/assets/ImageVideo/Grattan/grattan_house'-->
         <!--url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/statperi/imagetracking-ar/main/assets/ImageVideo/Pinball/pinball'-->
         <!--url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex'>-->
         <!--url='./assets/ImageVideo/Pinball/pinball'-->
-
-        <!--<a-nft videohandler
+        <a-nft videohandler
                type='nft' smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
                url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/statperi/imagetracking-ar/main/assets/ImageVideo/Pinball/pinball'>
             <a-video src="#vid"
@@ -46,20 +72,7 @@
                      width='300'
                      height='175'>
             </a-video>
-        </a-nft>-->
-
-
-
-        <a-nft
-            url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/statperi/imagetracking-ar/main/assets/ImageVideo/Pinball/pinball"
-            type='nft' smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
-
-            <a-entity gltf-model="assets/bear/scene.gltf"
-                      rotation="0 180 0"
-                      scale="15 15 15"
-                      animation-mixer />
         </a-nft>
-
         <a-entity camera></a-entity>
     </a-scene>
 </body>
