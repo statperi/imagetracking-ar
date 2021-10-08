@@ -76,7 +76,8 @@ function createModel(model, location) {
     let text = document.createElement('a-entity');
     text.setAttribute('value', model.info);
     text.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude};`);
-    text.setAttribute('scale', model.scale);
+    // text.setAttribute('scale', model.scale);
+    text.setAttribute('scale', '500 500 500');
     scene.appendChild(text);
 }
 
