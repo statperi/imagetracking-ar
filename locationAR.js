@@ -73,7 +73,7 @@ function createModel(model, location) {
     scene.appendChild(entity);
 
 
-    let scale = model.getAttribute('scale'); // model's scale
+    let scale = entity.getAttribute('scale'); // model's scale
 
     let text = document.createElement('a-text');
     text.setAttribute('value', model.info);
