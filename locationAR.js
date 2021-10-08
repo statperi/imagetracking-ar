@@ -7,7 +7,7 @@ var ar_models = [{
     url: './assets/map_pointer/scene.gltf',
     scale: '0.1 0.1 0.1',
     rotation: '0 180 0',
-    info: 'Articuno'
+    info: 'Map Pointer'
 }];
 
 
