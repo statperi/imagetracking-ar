@@ -4,18 +4,11 @@ window.onload = () => {
 
 var ar_models = [{
     code: 'articuno',
-    url: './assets/articuno/scene.gltf',
+    url: './assets/map_pointer/scene.gltf',
     scale: '0.1 0.1 0.1',
     rotation: '0 180 0',
     info: 'Articuno'
-}, {
-    code: 'bird',
-    url: './assets/phoenix_bird/scene.gltf',
-    scale: '0.1 0.1 0.1',
-    rotation: '0 180 0',
-    info: 'Bird'
-}
-];
+}];
 
 
 function getCurrentLocation() {
