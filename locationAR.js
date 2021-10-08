@@ -55,7 +55,7 @@ function getCoordinatesSuccess(response) {
         let newIndex = modelIndex % ar_models.length;
         let ar_model = ar_models[newIndex];
 
-        createModel(ar_model, position);
+        //createModel(ar_model, position);
     }
 
 
