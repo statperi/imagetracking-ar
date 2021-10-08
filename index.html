@@ -1,66 +1,39 @@
-<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
-<script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'></script>
+<!DOCTYPE html>
+<html>
 
-<style>
-    .arjs-loader {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.8);
-        z-index: 9999;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>GeoAR.js demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    .arjs-loader div {
-        text-align: center;
-        font-size: 1.25em;
-        color: white;
-    }
-</style>
+    <script src='https://aframe.io/releases/0.9.2/aframe.min.js'></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script>
+        THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
+    </script>
+    <script src="./locationAR.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
 
-<body style='margin : 0px; overflow: hidden;'>
-    <div class="arjs-loader">
-        <div>Loading, please wait...</div>
-    </div>
+<body style='margin: 0; overflow: hidden;'>
 
-    <a-scene 
-        vr-mode-ui="enabled: false;"
-        renderer='logarithmicDepthBuffer: true;'
-        embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+    <a-scene vr-mode-ui='enabled: false'
+             embedded
+             gesture-detector
+             arjs='sourceType: webcam;
+                    sourceWidth:1280;
+                    sourceHeight:960;
+                    displayWidth: 1280;
+                    displayHeight: 960;
+                    videoTexture: true;
+                    debugUIEnabled: false;'>
 
-        <!--url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/statperi/imagetracking-ar/main/assets/ImageVideo/Grattan/grattan_house'-->
-        <!--url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/statperi/imagetracking-ar/main/assets/ImageVideo/Pinball/pinball'-->
-        <!--url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex'>-->
-        <!--url='./assets/ImageVideo/Pinball/pinball'-->
-
-        <!--<a-nft videohandler
-               type='nft' smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
-               url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/statperi/imagetracking-ar/main/assets/ImageVideo/Pinball/pinball'>
-            <a-video src="#vid"
-                     position='50 150 -100'
-                     rotation='90 0 180'
-                     width='300'
-                     height='175'>
-            </a-video>
-        </a-nft>-->
-
-
-
-        <a-nft
-            url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/statperi/imagetracking-ar/main/assets/ImageVideo/Grattan/grattan_house"
-            type='nft' smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5">
-
-            <a-entity gltf-model="assets/bear/scene.gltf"
-                      position='50 150 -100'
-                      rotation="0 0 0"
-                      scale="3 3 3"
-                      animation-mixer />
-        </a-nft>
-
-        <a-entity camera></a-entity>
+        <a-camera gps-camera="gpsTimeInterval: 1000;"
+                  arjs-look-controls='smoothingFactor: 0.1'
+                  rotation-reader></a-camera>
     </a-scene>
+
 </body>
+</html>
