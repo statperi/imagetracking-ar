@@ -73,13 +73,13 @@ function createModel(model, location) {
     scene.appendChild(entity);
 
 
-    let scale = entity.getAttribute('scale'); // model's scale
+    let scale = model.scale.substr(0, 2); // model's scale
 
     let text = document.createElement('a-text');
     text.setAttribute('value', model.info);
     text.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude};`);
 
-    scaleUp(text, scale.x * 10)
+    scaleUp(text, scale * 10)
 
     scene.appendChild(text);
 
