@@ -73,10 +73,14 @@ function createModel(model, location) {
     scene.appendChild(entity);
 
 
+    let scale = model.getAttribute('scale'); // model's scale
+
     let text = document.createElement('a-text');
     text.setAttribute('value', model.info);
     text.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude};`);
-    text.setAttribute('scale', model.scale * 10);
+
+    scaleUp(text, scale.x * 10)
+
     scene.appendChild(text);
 
 
@@ -105,12 +109,8 @@ function poolbegModel() {
         info: 'Map Pointer'
     }
 
-
     createModel(poolbegModel, { latitude: 53.3402763, longitude: -6.189487 });
 }
-
-
-
 
 
 function autoScale(model, text) {
@@ -122,7 +122,12 @@ function autoScale(model, text) {
         }
 
         let scale = model.getAttribute('scale');
-        model.setAttribute('scale', scale.x + 2 + ' ' + scale.y + 2 + ' ' + scale.z + 2 + ' ');
+        scaleUp(model, scale.x + 2);
 
-    }, 10000);
+    }, 15000);
+}
+
+
+function scaleUp(model, scale) {
+    model.setAttribute('scale', scale + ' ' + scale + ' ' + scale + ' ');
 }
