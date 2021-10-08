@@ -121,7 +121,8 @@ function autoScale(model, text) {
             text.setAttribute('value', model.info + ' - ' + Math.trunc(distance) + ' meters');
         }
 
-        model.setAttribute('scale', model.scale + 2);
+        let scale = mode.getAttribute('scale');
+        model.setAttribute('scale', scale.x + 2 + ' ' + scale.y + 2 + ' ' + scale.z + 2 + ' ');
 
     }, 10000);
 }
