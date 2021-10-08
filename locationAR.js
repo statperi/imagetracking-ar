@@ -97,6 +97,7 @@ function setModel(model, entity) {
 
     element.attr('gltf-model', model.url);
     element.attr('animation-mixer', '');
+    element.attr('info', model.info);
 };
 
 
@@ -118,7 +119,7 @@ function autoScale(model, text) {
         distance = model.getAttribute('distance');
 
         if (distance) {
-            text.setAttribute('value', model.info + ' - ' + Math.trunc(distance) + ' meters');
+            text.setAttribute('value', model.getAttribute('info') + ' - ' + Math.trunc(distance) + ' meters');
         }
 
         let scale = model.getAttribute('scale');
