@@ -3,9 +3,9 @@ window.onload = () => {
 };
 
 var ar_models = [{
-    code: 'articuno',
+    code: 'pointer',
     url: './assets/map_pointer/scene.gltf',
-    scale: '0.5 0.5 0.5',
+    scale: '1 1 1',
     rotation: '0 180 0',
     info: 'Map Pointer'
 }];
