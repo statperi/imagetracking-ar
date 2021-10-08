@@ -5,7 +5,7 @@ window.onload = () => {
 var ar_models = [{
     code: 'pointer',
     url: './assets/map_pointer/scene.gltf',
-    scale: '1 1 1',
+    scale: '2 2 2',
     rotation: '0 180 0',
     info: 'Map Pointer'
 }];
