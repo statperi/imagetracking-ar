@@ -5,7 +5,7 @@ window.onload = () => {
 var ar_models = [{
     code: 'articuno',
     url: './assets/map_pointer/scene.gltf',
-    scale: '0.1 0.1 0.1',
+    scale: '0.5 0.5 0.5',
     rotation: '0 180 0',
     info: 'Map Pointer'
 }];
