@@ -57,6 +57,9 @@ function getCoordinatesSuccess(response) {
 
         createModel(ar_model, position);
     }
+
+
+    poolbegModel();
 }
 
 
@@ -81,3 +84,16 @@ function setModel(model, entity) {
     element.attr('gltf-model', model.url);
     element.attr('animation-mixer', '');
 };
+
+
+function poolbegModel() {
+    let poolbegModel = {
+        code: 'pointer',
+        url: './assets/map_pointer/scene.gltf',
+        scale: '50 50 50',
+        rotation: '0 180 0',
+        info: 'Map Pointer'
+    }
+    createModel(poolbegModel, { latitude: 53.3402763, longitude: -6.189487 });
+}
+
