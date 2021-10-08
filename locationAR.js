@@ -76,9 +76,11 @@ function createModel(model, location) {
     let text = document.createElement('a-text');
     text.setAttribute('value', model.info);
     text.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude};`);
-    // text.setAttribute('scale', model.scale);
-    text.setAttribute('scale', '500 500 500');
+    text.setAttribute('scale', model.scale * 10);
     scene.appendChild(text);
+
+
+    autoScale(entity, text);
 }
 
 
@@ -102,6 +104,24 @@ function poolbegModel() {
         rotation: '0 180 0',
         info: 'Map Pointer'
     }
+
+
     createModel(poolbegModel, { latitude: 53.3402763, longitude: -6.189487 });
 }
 
+
+
+
+
+function autoScale(model, text) {
+    setInterval(function () {
+        distance = model.getAttribute('distance');
+
+        if (distance) {
+            text.setAttribute('value', model.info + ' - ' + Math.trunc(distance) + ' meters');
+        }
+
+        model.setAttribute('scale', model.scale + 2);
+
+    }, 10000);
+}
