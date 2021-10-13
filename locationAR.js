@@ -77,6 +77,7 @@ function createModel(model, location) {
 
     let text = document.createElement('a-text');
     text.setAttribute('value', model.info);
+    text.setAttribute('look-at', '[gps-camera]');
     text.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude};`);
 
     scaleUp(text, scale * 10)
@@ -107,10 +108,10 @@ function poolbegModel() {
         url: './assets/map_pointer/scene.gltf',
         scale: '50 50 50',
         rotation: '0 180 0',
-        info: 'Map Pointer'
+        info: 'Poolbeg'
     }
 
-    createModel(poolbegModel, { latitude: 53.3402763, longitude: -6.189487 });
+    createModel(poolbegModel, { latitude: 53.3401000, longitude: -6.187800 });
 }
 
 

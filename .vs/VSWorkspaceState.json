@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets"
+    "\\assets",
+    "\\assets\\map_pointer",
+    "\\assets\\phoenix_bird"
   ],
+  "SelectedNode": "\\locationAR.js",
   "PreviewInSolutionExplorer": false
 }
