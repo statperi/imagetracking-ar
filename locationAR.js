@@ -59,37 +59,48 @@ function getCoordinatesSuccess(response) {
         createModel(ar_model, position, true);
     }
 
-
     poolbegModel();
 }
 
 
 function createModel(model, location, autoscale) {
     let scene = document.querySelector('a-scene');
-    let entity = document.createElement('a-entity');
+    //let entity = document.createElement('a-entity');
 
-    entity.setAttribute('scale', model.scale);
-    entity.setAttribute('rotation', model.rotation);
-    entity.setAttribute('position', model.position);
-    entity.setAttribute('gltf-model', model.url);
-    entity.setAttribute('info', model.info);
-    entity.setAttribute('animation-mixer', '');
-    entity.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude};`);
+    //entity.setAttribute('scale', model.scale);
+    //entity.setAttribute('rotation', model.rotation);
+    //entity.setAttribute('position', model.position);
+    //entity.setAttribute('gltf-model', model.url);
+    //entity.setAttribute('info', model.info);
+    //entity.setAttribute('animation-mixer', '');
+    //entity.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude};`);
+
+    let entity = createModelElement({
+        url: model.url,
+        info: model.info,
+        position: model.position,
+        rotation: model.rotation,
+        scale: model.scale,
+        location: location
+    });
 
     scene.appendChild(entity);
 
 
-    // let scale = model.scale.substr(0, 2); // model's scale
+    
+    //let text = document.createElement('a-text');
+    //text.setAttribute('value', model.info);
+    //text.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude};`);
+    //text.setAttribute('scale', model.text_scale);
 
-    let text = document.createElement('a-text');
-    text.setAttribute('value', model.info);
-    text.setAttribute('look-at', '[gps-camera]');
-    text.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude};`);
-    text.setAttribute('scale', model.text_scale)
+    var text_element = createTextElement({
+        info: model.info,
+        scale: model.text_scale,
+        location: location
+    });
 
-    //scaleUp(text, scale * 10)
+    scene.appendChild(text_element);
 
-    scene.appendChild(text);
 
     refresh(entity, text, autoscale);
 }
@@ -122,10 +133,49 @@ function refresh(model, text, autoscale) {
             scaleUp(model, scale.x + 0.2);
         }
 
+        if (Math.trunc(distance) < 5) {
+            showSuccess(model, text);
+        }
+
     }, 15000);
 }
 
 
+function showSuccess(model, text) {
+    createTextElement({
+        info: "Success!!!",
+        scale: "10 10 10",
+        position: model.position,
+    });
+
+    model.remove(); // remove current models
+    text.remove();
+}
+
 function scaleUp(model, scale) {
     model.setAttribute('scale', scale + ' ' + scale + ' ' + scale + ' ');
 }
+
+
+
+function createModelElement(config) {
+    let element = document.createElement('a-entity');
+    entity.setAttribute('scale', config.scale);
+    entity.setAttribute('rotation', config.rotation);
+    entity.setAttribute('position', config.position);
+    entity.setAttribute('gltf-model', config.url);
+    entity.setAttribute('info', config.info);
+    entity.setAttribute('animation-mixer', '');
+    entity.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
+    return element;
+}
+
+function createTextElement(config) {
+    let element = document.createElement('a-text');
+    text.setAttribute('value', config.info);
+    text.setAttribute('scale', config.scale)
+    text.setAttribute('look-at', '[gps-camera]');
+    text.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
+    return element;
+}
+
