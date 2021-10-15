@@ -5,11 +5,21 @@ window.onload = () => {
 var ar_models = [{
     code: 'pointer',
     url: './assets/map_pointer/scene.gltf',
-    scale: '2 2 2',
+    scale: '1 1 1',
     text_scale: '50 50 50',
-    rotation: '0 180 0',
-    info: 'Map Pointer'
+    rotation: '0 0 0',
+    position: '0 30 0',
+    info: 'Pin'
 }];
+
+var firework = {
+    code: 'firework',
+    url: './assets/firework/scene.gltf',
+    scale: '2 2 2',
+    rotation: '0 180 0',
+    position: '0 30 0',
+    info: 'Firework'
+}
 
 
 function getCurrentLocation() {
@@ -94,6 +104,7 @@ function poolbegModel() {
         url: './assets/map_pointer/scene.gltf',
         scale: '50 50 50',
         text_scale: '500 500 500',
+        position: '0 30 0',
         rotation: '0 180 0',
         info: 'Poolbeg'
     }
@@ -111,25 +122,28 @@ function refresh(model, text, autoscale) {
 
         if (autoscale) {
             let scale = model.getAttribute('scale');
-            scaleUp(model, scale.x + 0.2);
+            scaleUp(model, scale.x + 0.0002);
         }
 
-        if (Math.trunc(distance) < 5) {
+        if (Math.trunc(distance) <= 5) {
             showSuccess(model, text);
         }
 
-    }, 15000);
+    }, 1000);
 }
 
 
 function showSuccess(model, text) {
     let scene = document.querySelector('a-scene');
 
-    let success = createTextElement({
-        info: "You Are Here!!!",
-        scale: "10 10 10",
-        location: model.getAttribute('gps-entity-place')
-    });
+    //let success = createTextElement({
+    //    info: "You Are Here!!!",
+    //    scale: "10 10 10",
+    //    location: model.getAttribute('gps-entity-place')
+    //});
+
+    firework.location = model.getAttribute('gps-entity-place');
+    let success = createModelElement(firework);
 
     scene.appendChild(success);
 
