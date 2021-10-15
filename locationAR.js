@@ -160,22 +160,22 @@ function scaleUp(model, scale) {
 
 function createModelElement(config) {
     let element = document.createElement('a-entity');
-    entity.setAttribute('scale', config.scale);
-    entity.setAttribute('rotation', config.rotation);
-    entity.setAttribute('position', config.position);
-    entity.setAttribute('gltf-model', config.url);
-    entity.setAttribute('info', config.info);
-    entity.setAttribute('animation-mixer', '');
-    entity.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
+    element.setAttribute('scale', config.scale);
+    element.setAttribute('rotation', config.rotation);
+    element.setAttribute('position', config.position);
+    element.setAttribute('gltf-model', config.url);
+    element.setAttribute('info', config.info);
+    element.setAttribute('animation-mixer', '');
+    element.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
     return element;
 }
 
 function createTextElement(config) {
     let element = document.createElement('a-text');
-    text.setAttribute('value', config.info);
-    text.setAttribute('scale', config.scale)
-    text.setAttribute('look-at', '[gps-camera]');
-    text.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
+    element.setAttribute('value', config.info);
+    element.setAttribute('scale', config.scale)
+    element.setAttribute('look-at', '[gps-camera]');
+    element.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
     return element;
 }
 
