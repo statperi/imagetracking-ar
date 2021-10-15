@@ -74,22 +74,14 @@ function createModel(model, location, autoscale) {
         scale: model.scale,
         location: location
     });
-
-    scene.appendChild(entity);
-
-
     
-    //let text = document.createElement('a-text');
-    //text.setAttribute('value', model.info);
-    //text.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude};`);
-    //text.setAttribute('scale', model.text_scale);
-
-    var text_element = createTextElement({
+    let text_element = createTextElement({
         info: model.info,
         scale: model.text_scale,
         location: location
     });
 
+    scene.appendChild(entity);
     scene.appendChild(text_element);
 
 
@@ -133,8 +125,8 @@ function refresh(model, text, autoscale) {
 function showSuccess(model, text) {
     let scene = document.querySelector('a-scene');
 
-    var success = createTextElement({
-        info: "Success!!!",
+    let success = createTextElement({
+        info: "You Are Here!!!",
         scale: "10 10 10",
         location: model.getAttribute('gps-entity-place')
     });
