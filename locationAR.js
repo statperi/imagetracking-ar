@@ -8,7 +8,7 @@ var ar_models = [{
     scale: '1 1 1',
     text_scale: '50 50 50',
     rotation: '0 0 0',
-    position: '0 30 0',
+    // position: '0 30 0',
     info: 'Pin'
 }];
 
@@ -17,7 +17,7 @@ var firework = {
     url: './assets/firework/scene.gltf',
     scale: '2 2 2',
     rotation: '0 180 0',
-    position: '0 30 0',
+    // position: '0 30 0',
     info: 'Firework'
 }
 
