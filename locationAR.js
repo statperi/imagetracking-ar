@@ -145,7 +145,7 @@ function showSuccess(model, text) {
     createTextElement({
         info: "Success!!!",
         scale: "10 10 10",
-        position: model.getAttribute('gps-entity-place')
+        location: model.getAttribute('gps-entity-place')
     });
 
     model.remove(); // remove current models
