@@ -102,7 +102,7 @@ function createModel(model, location, autoscale) {
     scene.appendChild(text_element);
 
 
-    refresh(entity, text, autoscale);
+    refresh(entity, text_element, autoscale);
 }
 
 
