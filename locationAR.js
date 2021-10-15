@@ -116,9 +116,10 @@ function refresh(model, text, autoscale) {
     setInterval(function () {
         distance = model.getAttribute('distance');
 
-        if (distance) {
-            text.setAttribute('value', model.getAttribute('info') + ' - ' + Math.trunc(distance) + ' meters');
-        }
+        if (!distance)
+            return;
+
+        text.setAttribute('value', model.getAttribute('info') + ' - ' + Math.trunc(distance) + ' meters');
 
         if (autoscale) {
             let scale = model.getAttribute('scale');
