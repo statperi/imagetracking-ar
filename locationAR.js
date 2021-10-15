@@ -65,16 +65,7 @@ function getCoordinatesSuccess(response) {
 
 function createModel(model, location, autoscale) {
     let scene = document.querySelector('a-scene');
-    //let entity = document.createElement('a-entity');
-
-    //entity.setAttribute('scale', model.scale);
-    //entity.setAttribute('rotation', model.rotation);
-    //entity.setAttribute('position', model.position);
-    //entity.setAttribute('gltf-model', model.url);
-    //entity.setAttribute('info', model.info);
-    //entity.setAttribute('animation-mixer', '');
-    //entity.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude};`);
-
+    
     let entity = createModelElement({
         url: model.url,
         info: model.info,
@@ -105,7 +96,6 @@ function createModel(model, location, autoscale) {
     refresh(entity, text_element, autoscale);
 }
 
-
 function poolbegModel() {
     let poolbegModel = {
         code: 'pointer',
@@ -118,7 +108,6 @@ function poolbegModel() {
 
     createModel(poolbegModel, { latitude: 53.3401000, longitude: -6.187800 });
 }
-
 
 function refresh(model, text, autoscale) {
     setInterval(function () {
@@ -142,11 +131,15 @@ function refresh(model, text, autoscale) {
 
 
 function showSuccess(model, text) {
-    createTextElement({
+    let scene = document.querySelector('a-scene');
+
+    var success = createTextElement({
         info: "Success!!!",
         scale: "10 10 10",
         location: model.getAttribute('gps-entity-place')
     });
+
+    scene.appendChild(success);
 
     model.remove(); // remove current models
     text.remove();
