@@ -16,9 +16,18 @@ var firework = {
     code: 'firework',
     url: './assets/firework/scene.gltf',
     scale: '2 2 2',
-    rotation: '0 180 0',
+    rotation: '0 0 0',
     // position: '0 30 0',
     info: 'Firework'
+}
+
+var star = {
+    code: 'star',
+    url: './assets/star/scene.gltf',
+    scale: '2 2 2',
+    rotation: '0 0 0',
+    // position: '0 30 0',
+    info: 'Star'
 }
 
 
@@ -143,8 +152,12 @@ function showSuccess(model, text) {
     //    location: model.getAttribute('gps-entity-place')
     //});
 
-    firework.location = model.getAttribute('gps-entity-place');
-    let success = createModelElement(firework);
+
+    //firework.location = model.getAttribute('gps-entity-place');
+    //let success = createModelElement(firework);
+
+    star.location = model.getAttribute('gps-entity-place');
+    let success = createModelElement(star);
 
     scene.appendChild(success);
 
