@@ -1,5 +1,15 @@
+isMarkerVisible = false;
+rotationFactor = 5;
+scaleFactor = 1;
+minScale = 0.25;
+maxScale = 10;
+
+
 window.onload = () => {
     getCurrentLocation();
+
+
+    initSceneListeners();
 };
 
 var ar_models = [{
@@ -180,6 +190,11 @@ function createModelElement(config) {
     element.setAttribute('info', config.info);
     element.setAttribute('animation-mixer', '');
     element.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
+
+    //gesture-handler="minScale: 0.25; maxScale: 10"
+    element.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
+    element.classList.add('clickable');
+
     return element;
 }
 
@@ -192,3 +207,62 @@ function createTextElement(config) {
     return element;
 }
 
+
+
+
+
+
+function initSceneListeners() {
+    var sceneEl = $('a-scene')[0];
+
+    sceneEl.addEventListener("markerFound", (e) => {
+        console.log('marker is visible');
+        isMarkerVisible = true;
+    });
+
+    sceneEl.addEventListener("markerLost", (e) => {
+        console.log('marker lost');
+        isMarkerVisible = false;
+    });
+
+
+
+    sceneEl.addEventListener("onefingermove", handleRotation);
+    sceneEl.addEventListener("twofingermove", handleScale);
+}
+
+
+function handleRotation(event) {
+    if (isMarkerVisible) {
+        console.log('rotation event', event);
+
+        $('a-entity').forEach((el) => {
+            el.object3D.rotation.y +=
+                event.detail.positionChange.x * rotationFactor;
+
+            el.object3D.rotation.x +=
+                event.detail.positionChange.y * rotationFactor;
+        });
+    }
+}
+
+function handleScale(event) {
+    console.log('scale event', event);
+
+
+    this.scaleFactor *=
+        1 + event.detail.spreadChange / event.detail.startSpread;
+
+    // gesture-handler="minScale: 0.25; maxScale: 10"
+
+    this.scaleFactor = Math.min(
+        Math.max(this.scaleFactor, this.minScale),
+        this.maxScale
+    );
+
+    $('a-entity').forEach((el) => {
+        el.object3D.scale.x = scaleFactor * initialScale.x;
+        el.object3D.scale.y = scaleFactor * initialScale.y;
+        el.object3D.scale.z = scaleFactor * initialScale.z;
+    });
+}
