@@ -1,0 +1,11 @@
+Model Information:
+* title:	Post Apocalyptic Phone Booth
+* source:	https://sketchfab.com/3d-models/post-apocalyptic-phone-booth-825cbc3f3b4c4862820e1e20c7113eba
+* author:	denis_cliofas (https://sketchfab.com/denis_cliofas)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Post Apocalyptic Phone Booth" (https://sketchfab.com/3d-models/post-apocalyptic-phone-booth-825cbc3f3b4c4862820e1e20c7113eba) by denis_cliofas (https://sketchfab.com/denis_cliofas) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

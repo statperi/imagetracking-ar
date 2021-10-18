@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
-    "\\assets\\firework"
+    "\\assets\\star",
+    "\\Scripts"
   ],
-  "SelectedNode": "\\locationAR.js",
+  "SelectedNode": "\\Scripts\\gesture-handler.js",
   "PreviewInSolutionExplorer": false
 }
