@@ -40,7 +40,7 @@ var phone_booth = () => {
     return {
         code: 'phone_booth',
         url: './assets/phone_booth/scene.gltf',
-        scale: '10 10 10',
+        scale: '5 5 5',
         text_scale: '50 50 50',
         rotation: '0 0 0',
         // position: '0 30 0',
@@ -87,13 +87,13 @@ function processGetCoordinates(currentLocation) {
 function getCoordinatesSuccess(response) {
     for (var i = 0; i < response.length; i++) {
 
-        //let pointer = pointer();
-        //pointer.location = response[i];
-        //createEntity(pointer, true);
+        let pointer = pointer();
+        pointer.location = response[i];
+        createEntity(pointer, true);
 
-        let phone = phone_booth();
-        phone.location = response[i];
-        createEntity(phone);
+        //let phone = phone_booth();
+        //phone.location = response[i];
+        //createEntity(phone);
     }
 
     poolbegModel();
