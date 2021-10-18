@@ -40,7 +40,7 @@ var phone_booth = () => {
     return {
         code: 'phone_booth',
         url: './assets/phone_booth/scene.gltf',
-        scale: '1 1 1',
+        scale: '10 10 10',
         text_scale: '50 50 50',
         rotation: '0 0 0',
         // position: '0 30 0',
