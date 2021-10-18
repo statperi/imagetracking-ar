@@ -147,8 +147,9 @@ function createEntity(model, autoscale) {
 function refresh(entity, text, autoscale) {
     setInterval(function () {
         distance = entity.getAttribute('distance');
+        success = entity.getAttribute('success');
 
-        if (!distance)
+        if (!distance || success == 'true')
             return;
 
         text.setAttribute('value', entity.getAttribute('info') + ' - ' + Math.trunc(distance) + ' meters');
@@ -159,6 +160,7 @@ function refresh(entity, text, autoscale) {
         }
 
         if (Math.trunc(distance) <= 5) {
+            entity.setAttribute('success', 'true');
             showSuccess(entity, text);
         }
 
@@ -199,6 +201,7 @@ function createEntityElement(config) {
     element.setAttribute('gltf-model', config.url);
     element.setAttribute('info', config.info);
     element.setAttribute('animation-mixer', '');
+    element.setAttribute('success', 'false');
     element.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
 
     element.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
