@@ -12,7 +12,7 @@ var pointer = () => {
         // position: '0 30 0',
         info: 'Pin'
     }
-};
+}
 
 var firework = () => {
     return {
