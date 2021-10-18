@@ -2,7 +2,7 @@ window.onload = () => {
     getCurrentLocation();
 };
 
-var pointer = () => {
+var map_pointer = () => {
     return {
         code: 'pointer',
         url: './assets/map_pointer/scene.gltf',
@@ -87,7 +87,7 @@ function processGetCoordinates(currentLocation) {
 function getCoordinatesSuccess(response) {
     for (var i = 0; i < response.length; i++) {
 
-        let pointer = pointer();
+        let pointer = map_pointer();
         pointer.location = response[i];
         createEntity(pointer, true);
 
