@@ -125,26 +125,31 @@ function createEntity(model, autoscale) {
 
 
 function refresh(entity, text, autoscale) {
-    setInterval(function () {
-        distance = entity.getAttribute('distance');
-        success = entity.getAttribute('success');
+    var intervalId =
+        setInterval(function () {
+            distance = entity.getAttribute('distance');
+            // success = entity.getAttribute('success');
 
-        if (!distance || success == 'true')
-            return;
+            //if (!distance || success == 'true')
+            if (!distance)
+                return;
 
-        text.setAttribute('value', entity.getAttribute('info') + ' - ' + Math.trunc(distance) + ' meters');
+            text.setAttribute('value', entity.getAttribute('info') + ' - ' + Math.trunc(distance) + ' meters');
 
-        if (autoscale) {
-            let scale = entity.getAttribute('scale');
-            scaleUp(entity, scale.x + 0.0002);
-        }
+            if (autoscale) {
+                let scale = entity.getAttribute('scale');
+                scaleUp(entity, scale.x + 0.0002);
+            }
 
-        if (Math.trunc(distance) <= 5) {
-            entity.setAttribute('success', 'true');
-            showSuccess(entity, text);
-        }
+            if (Math.trunc(distance) <= 5) {
+                // entity.setAttribute('success', 'true');
+                clearInterval(entity.getAttribute('intervalId'));
+                showSuccess(entity, text);
+            }
 
-    }, 1000);
+        }, 1000);
+
+    entity.setAttribute('intervalId', intervalId);
 }
 
 
