@@ -29,7 +29,7 @@ var Star = () => {
     return {
         code: 'star',
         url: './assets/star/scene.gltf',
-        scale: '2 2 2',
+        scale: '5 5 5',
         rotation: '0 0 0',
         // position: '0 30 0',
         info: 'Star'
