@@ -47,7 +47,6 @@ function getCurrentLocation() {
 
 
 function processGetCoordinates(currentLocation) {
-
     var data = {
         latitude: currentLocation.coords.latitude,
         longitude: currentLocation.coords.longitude
@@ -74,17 +73,16 @@ function processGetCoordinates(currentLocation) {
 
 function getCoordinatesSuccess(response) {
     for (var i = 0; i < response.length; i++) {
-
         let pointer = Pointer();
         pointer.location = response[i];
         createEntity(pointer, true);
     }
 
-    poolbegModel();
+    poolbegEntity();
 }
 
 
-function poolbegModel() {
+function poolbegEntity() {
     let poolbegModel = Pointer();
 
     poolbegModel.info = 'Poolbeg';
@@ -108,7 +106,8 @@ function createEntity(model, autoscale) {
         position: model.position,
         rotation: model.rotation,
         scale: model.scale,
-        location: model.location
+        location: model.location,
+        gestureConfig: 'minScale: 0.25; maxScale: 10'
     });
     
     let textEl = createTextElement({
@@ -186,8 +185,10 @@ function createEntityElement(config) {
     element.setAttribute('success', 'false');
     element.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
 
-    element.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
-    element.classList.add('clickable');
+    if (config.gestureConfig) {
+        element.setAttribute('gesture-handler', config.gestureConfig);
+        element.classList.add('clickable');
+    }
 
     return element;
 }
