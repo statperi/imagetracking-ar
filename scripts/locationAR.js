@@ -2,7 +2,7 @@ window.onload = () => {
     getCurrentLocation();
 };
 
-var map_pointer = () => {
+var Pointer = () => {
     return {
         code: 'pointer',
         url: './assets/map_pointer/scene.gltf',
@@ -14,7 +14,7 @@ var map_pointer = () => {
     }
 }
 
-var firework = () => {
+var Firework = () => {
     return {
         code: 'firework',
         url: './assets/firework/scene.gltf',
@@ -25,7 +25,7 @@ var firework = () => {
     }
 }
 
-var star = () => {
+var Star = () => {
     return {
         code: 'star',
         url: './assets/star/scene.gltf',
@@ -33,18 +33,6 @@ var star = () => {
         rotation: '0 0 0',
         // position: '0 30 0',
         info: 'Star'
-    }
-}
-
-var phone_booth = () => {
-    return {
-        code: 'phone_booth',
-        url: './assets/phone_booth/scene.gltf',
-        scale: '5 5 5',
-        text_scale: '50 50 50',
-        rotation: '0 0 0',
-        // position: '0 30 0',
-        info: 'Phone Booth'
     }
 }
 
@@ -87,13 +75,9 @@ function processGetCoordinates(currentLocation) {
 function getCoordinatesSuccess(response) {
     for (var i = 0; i < response.length; i++) {
 
-        let pointer = map_pointer();
+        let pointer = Pointer();
         pointer.location = response[i];
         createEntity(pointer, true);
-
-        //let phone = phone_booth();
-        //phone.location = response[i];
-        //createEntity(phone);
     }
 
     poolbegModel();
@@ -101,19 +85,15 @@ function getCoordinatesSuccess(response) {
 
 
 function poolbegModel() {
-    let poolbegModel = {
-        code: 'pointer',
-        url: './assets/map_pointer/scene.gltf',
-        scale: '50 50 50',
-        text_scale: '500 500 500',
-        position: '0 30 0',
-        rotation: '0 180 0',
-        info: 'Poolbeg',
-        location: {
-            latitude: 53.3401000,
-            longitude: -6.187800
-        }
-    }
+    let poolbegModel = Pointer();
+
+    poolbegModel.info = 'Poolbeg';
+    poolbegModel.scale = '50 50 50';
+    poolbegModel.text_scale = '500 500 500';
+    poolbegModel.location = {
+        latitude: 53.3401000,
+        longitude: -6.187800
+    };
 
     createEntity(poolbegModel);
 }
@@ -177,7 +157,7 @@ function showSuccess(entity, text) {
     //    location: model.getAttribute('gps-entity-place')
     //});
 
-    let star = star();
+    let star = Star();
     star.location = entity.getAttribute('gps-entity-place');
     let success = createEntityElement(entity);
 
@@ -187,10 +167,10 @@ function showSuccess(entity, text) {
     text.remove();
 }
 
+
 function scaleUp(model, scale) {
     model.setAttribute('scale', scale + ' ' + scale + ' ' + scale + ' ');
 }
-
 
 
 function createEntityElement(config) {

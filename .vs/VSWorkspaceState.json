@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\assets",
+    "\\assets\\phone_booth",
     "\\assets\\star",
-    "\\Scripts"
+    "\\scripts"
   ],
-  "SelectedNode": "\\Scripts\\gesture-handler.js",
+  "SelectedNode": "\\assets\\phone_booth",
   "PreviewInSolutionExplorer": false
 }
