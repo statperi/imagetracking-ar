@@ -128,9 +128,7 @@ function refresh(entity, text, autoscale) {
     var intervalId =
         setInterval(function () {
             distance = entity.getAttribute('distance');
-            // success = entity.getAttribute('success');
 
-            //if (!distance || success == 'true')
             if (!distance)
                 return;
 
@@ -142,7 +140,6 @@ function refresh(entity, text, autoscale) {
             }
 
             if (Math.trunc(distance) <= 5) {
-                // entity.setAttribute('success', 'true');
                 clearInterval(entity.getAttribute('intervalId'));
                 showSuccess(entity, text);
             }
@@ -201,5 +198,8 @@ function createTextElement(config) {
     element.setAttribute('scale', config.scale)
     element.setAttribute('look-at', '[gps-camera]');
     element.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
+
+    element.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
+    element.classList.add('clickable');
     return element;
 }
