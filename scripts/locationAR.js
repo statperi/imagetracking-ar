@@ -159,7 +159,7 @@ function showSuccess(entity, text) {
 
     let star = Star();
     star.location = entity.getAttribute('gps-entity-place');
-    let success = createEntityElement(entity);
+    let success = createEntityElement(star);
 
     scene.appendChild(success);
 
