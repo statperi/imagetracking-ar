@@ -74,11 +74,16 @@ function processGetCoordinates(currentLocation) {
 function getCoordinatesSuccess(response) {
     for (var i = 0; i < response.length; i++) {
         let pointer = Pointer();
-        pointer.location = response[i];
+        pointer.location = {
+            latitude: response[i].latitude,
+            longitude: response[i].longitude
+        };
+
+        pointer.info = response[i].name + ' - ' + response[i].description;
         createEntity(pointer, true);
     }
 
-    poolbegEntity();
+    // poolbegEntity();
 }
 
 
@@ -135,7 +140,7 @@ function refresh(entity, text, autoscale) {
 
             if (autoscale) {
                 let scale = entity.getAttribute('scale');
-                scaleUp(entity, scale.x + 0.0002);
+                setScale(entity, scale.x + 0.0002);
             }
 
             if (Math.trunc(distance) <= 5) {
@@ -169,7 +174,7 @@ function showSuccess(entity, text) {
 }
 
 
-function scaleUp(model, scale) {
+function setScale(model, scale) {
     model.setAttribute('scale', scale + ' ' + scale + ' ' + scale + ' ');
 }
 
@@ -202,5 +207,10 @@ function createTextElement(config) {
 
     element.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
     element.classList.add('clickable');
+
+
+    element.setAttribute('anchor', 'https://www.voicesage.com/')
+    element.setAttribute('geometry', 'primitive:plane')
+
     return element;
 }
