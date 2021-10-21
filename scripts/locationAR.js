@@ -6,7 +6,7 @@ var Pointer = () => {
     return {
         code: 'pointer',
         url: './assets/map_pointer/scene.gltf',
-        scale: '2 2 2',
+        scale: '1 1 1',
         text_scale: '40 40 40',
         rotation: '0 0 0',
         // position: '0 30 0',
@@ -139,8 +139,11 @@ function refresh(entity, text, autoscale) {
             text.setAttribute('value', entity.getAttribute('info') + ' - ' + Math.trunc(distance) + ' meters');
 
             if (autoscale) {
-                let scale = entity.getAttribute('scale');
-                setScale(entity, scale.x + 0.0002);
+                let scale = calculateScale(distance);
+                setScale(entity, scale);
+
+                // let scale = entity.getAttribute('scale');
+                // setScale(entity, scale.x + 0.0002);
             }
 
             if (Math.trunc(distance) <= 5) {
@@ -178,6 +181,17 @@ function setScale(model, scale) {
     model.setAttribute('scale', scale + ' ' + scale + ' ' + scale + ' ');
 }
 
+function calculateScale(distance) {
+    let scale = 1;
+
+    if (distance > 200) scale = 2;
+    if (distance > 500) scale = 5;
+    if (distance > 1000) scale = 10;
+    if (distance > 3000) scale = 30;
+    if (distance > 5000) scale = 50;
+
+    return scale;
+}
 
 function createEntityElement(config) {
     let element = document.createElement('a-entity');
@@ -210,3 +224,4 @@ function createTextElement(config) {
 
     return element;
 }
+
