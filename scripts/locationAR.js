@@ -208,7 +208,5 @@ function createTextElement(config) {
     element.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
     element.classList.add('clickable');
 
-    element.setAttribute('geometry', 'primitive:plane');
-
     return element;
 }
