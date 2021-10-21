@@ -79,7 +79,7 @@ function getCoordinatesSuccess(response) {
             longitude: response[i].longitude
         };
 
-        pointer.info = response[i].name + ' - ' + response[i].description;
+        pointer.info = response[i].name + '\n' + response[i].description;
         createEntity(pointer, true);
     }
 
@@ -208,9 +208,7 @@ function createTextElement(config) {
     element.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
     element.classList.add('clickable');
 
-
-    element.setAttribute('anchor', 'https://www.voicesage.com/')
-    element.setAttribute('geometry', 'primitive:plane')
+    element.setAttribute('geometry', 'primitive:plane');
 
     return element;
 }
