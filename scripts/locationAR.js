@@ -185,12 +185,12 @@ function setScale(model, scale) {
 function calculateScale(distance) {
     let scale = 1;
 
-    if (distance > 100) scale = 2;
-    if (distance > 200) scale = 4;
-    if (distance > 500) scale = 8;
-    if (distance > 1000) scale = 10;
-    if (distance > 3000) scale = 30;
-    if (distance > 5000) scale = 50;
+    if (distance > 100) scale = 4;
+    if (distance > 200) scale = 8;
+    if (distance > 500) scale = 16;
+    if (distance > 1000) scale = 20;
+    if (distance > 3000) scale = 50;
+    if (distance > 5000) scale = 70;
 
     return scale;
 }
