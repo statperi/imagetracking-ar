@@ -6,8 +6,8 @@ var Pointer = () => {
     return {
         code: 'pointer',
         url: './assets/map_pointer/scene.gltf',
-        scale: '1 1 1',
-        text_scale: '50 50 50',
+        scale: '2 2 2',
+        text_scale: '40 40 40',
         rotation: '0 0 0',
         // position: '0 30 0',
         info: 'Pin'
