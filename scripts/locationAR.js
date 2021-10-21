@@ -141,6 +141,7 @@ function refresh(entity, text, autoscale) {
             if (autoscale) {
                 let scale = calculateScale(distance);
                 setScale(entity, scale);
+                setScale(text, scale);
 
                 // let scale = entity.getAttribute('scale');
                 // setScale(entity, scale.x + 0.0002);
