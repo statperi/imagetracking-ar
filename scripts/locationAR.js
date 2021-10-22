@@ -79,7 +79,11 @@ function getCoordinatesSuccess(response) {
         };
 
         pointer.info = pointer.text.text = response[i].name + '\n' + response[i].description;
+
+        if (response[i].description == "Open: Now") pointer.text.color = "#008000";
+        else                                        pointer.text.color = "#FF0000";
         
+
         createEntity(pointer, true);
     }
 
@@ -216,6 +220,10 @@ function createTextElement(config) {
     element.setAttribute('scale', config.scale)
     element.setAttribute('look-at', '[gps-camera]');
     element.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
+
+    if (config.color) {
+        element.setAttribute('color', config.color);
+    }
 
     if (config.lookAt == '[camera]') {
         element.setAttribute('look-at', '[camera]');
