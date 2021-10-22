@@ -8,7 +8,7 @@ var Pointer = () => {
         url: './assets/map_pointer/scene.gltf',
         scale: '1 1 1',
         text_scale: '40 40 40',
-        rotation: '0 0 0',
+        // rotation: '0 0 0',
         // position: '0 30 0',
         info: 'Pin'
     }
@@ -142,12 +142,9 @@ function refresh(entity, text, autoscale) {
                 let scale = calculateScale(distance);
                 setScale(entity, scale);
                 setScale(text, scale * 10);
-
-                // let scale = entity.getAttribute('scale');
-                // setScale(entity, scale.x + 0.0002);
             }
 
-            if (Math.trunc(distance) <= 5) {
+            if (Math.trunc(distance) <= 30) {
                 clearInterval(entity.getAttribute('intervalId'));
                 showSuccess(entity, text);
             }
@@ -161,17 +158,18 @@ function refresh(entity, text, autoscale) {
 function showSuccess(entity, text) {
     let scene = document.querySelector('a-scene');
 
-    //let success = createTextElement({
-    //    info: "You Are Here!!!",
-    //    scale: "10 10 10",
-    //    location: model.getAttribute('gps-entity-place')
-    //});
-
     let star = Star();
     star.location = entity.getAttribute('gps-entity-place');
-    let success = createEntityElement(star);
 
-    scene.appendChild(success);
+    let element = createEntityElement(star);
+    scene.appendChild(element);
+
+
+    entity.setAttribute('scale', star.scale);
+    entity.setAttribute('gltf-model', star.url);
+    entity.setAttribute('info', star.info);
+    entity.removeAttribute('gesture-handler');
+
 
     entity.remove(); // remove current models
     text.remove();
@@ -198,7 +196,7 @@ function calculateScale(distance) {
 function createEntityElement(config) {
     let element = document.createElement('a-entity');
     element.setAttribute('scale', config.scale);
-    element.setAttribute('rotation', config.rotation);
+    //element.setAttribute('rotation', config.rotation);
     element.setAttribute('position', config.position);
     element.setAttribute('gltf-model', config.url);
     element.setAttribute('info', config.info);
