@@ -205,6 +205,8 @@ function createEntityElement(config) {
     element.setAttribute('success', 'false');
     element.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
 
+    element.setAttribute('look-at', '[camera]');
+
     if (config.gestureConfig) {
         element.setAttribute('gesture-handler', config.gestureConfig);
         element.classList.add('clickable');
