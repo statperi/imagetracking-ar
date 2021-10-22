@@ -11,7 +11,14 @@ var Pointer = () => {
         // rotation: '0 0 0',
         // position: '0 30 0',
         lookAt: '[camera]',
-        info: 'Pin'
+        gestureConfig: 'minScale: 0.25; maxScale: 10',
+        info: 'Pin',
+        text: {
+            scale: '40 40 40',
+            lookAt: '[camera]',
+            gestureConfig: 'minScale: 0.25; maxScale: 10',
+            text: 'Pin'
+        }
     }
 }
 
@@ -23,6 +30,7 @@ var Star = () => {
         rotation: '0 0 0',
         // position: '0 30 0',
         lookAt: '[camera]',
+        gestureConfig: 'minScale: 0.25; maxScale: 10',
         info: 'Star'
     }
 }
@@ -65,12 +73,13 @@ function processGetCoordinates(currentLocation) {
 function getCoordinatesSuccess(response) {
     for (var i = 0; i < response.length; i++) {
         let pointer = Pointer();
-        pointer.location = {
+        pointer.location = pointer.text.location = {
             latitude: response[i].latitude,
             longitude: response[i].longitude
         };
 
-        pointer.info = response[i].name + '\n' + response[i].description;
+        pointer.info = pointer.text.info = response[i].name + '\n' + response[i].description;
+        
         createEntity(pointer, true);
     }
 
@@ -83,7 +92,11 @@ function poolbegEntity() {
 
     poolbegModel.info = 'Poolbeg';
     poolbegModel.scale = '50 50 50';
-    poolbegModel.text_scale = '500 500 500';
+    poolbegModel.text = {
+        text: 'Poolbeg',
+        scale: '500 500 500',
+    }
+
     poolbegModel.location = {
         latitude: 53.3401000,
         longitude: -6.187800
@@ -95,25 +108,25 @@ function poolbegEntity() {
 
 function createEntity(model, autoscale) {
     let scene = document.querySelector('a-scene');
-    
-    let entityEl = createEntityElement({
-        url: model.url,
-        info: model.info,
-        position: model.position,
-        rotation: model.rotation,
-        scale: model.scale,
-        location: model.location,
-        gestureConfig: 'minScale: 0.25; maxScale: 10'
-    });
-    
-    let textEl = createTextElement({
-        info: model.info,
-        scale: model.text_scale,
-        location: model.location
-    });
 
+    let entityEl = createEntityElement(model);
     scene.appendChild(entityEl);
-    scene.appendChild(textEl);
+
+    if (model.text) {
+        let textEl = createTextElement(model.text);
+        scene.appendChild(textEl);
+    }
+    
+
+
+    //let textEl = createTextElement({
+    //    info: model.info,
+    //    scale: model.text_scale,
+    //    location: model.location
+    //});
+
+    // scene.appendChild(entityEl);
+    
 
     refresh(entityEl, textEl, autoscale);
 }
@@ -198,13 +211,19 @@ function createEntityElement(config) {
 
 function createTextElement(config) {
     let element = document.createElement('a-text');
-    element.setAttribute('value', config.info);
+    element.setAttribute('value', config.text);
     element.setAttribute('scale', config.scale)
     element.setAttribute('look-at', '[gps-camera]');
     element.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
 
-    element.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
-    element.classList.add('clickable');
+    if (config.lookAt == '[camera]') {
+        element.setAttribute('look-at', '[camera]');
+    }
+    else if (config.gestureConfig) {
+        element.setAttribute('gesture-handler', 'minScale: 0.25; maxScale: 10');
+        element.classList.add('clickable');
+    }
+    
 
     return element;
 }
