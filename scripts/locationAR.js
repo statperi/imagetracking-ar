@@ -7,9 +7,6 @@ var Pointer = () => {
         code: 'pointer',
         url: './assets/map_pointer/scene.gltf',
         scale: '1 1 1',
-        text_scale: '40 40 40',
-        // rotation: '0 0 0',
-        // position: '0 30 0',
         lookAt: '[camera]',
         gestureConfig: 'minScale: 0.25; maxScale: 10',
         info: 'Pin',
@@ -44,7 +41,6 @@ function getCurrentLocation() {
     }
 }
 
-
 function processGetCoordinates(currentLocation) {
     var data = {
         latitude: currentLocation.coords.latitude,
@@ -69,7 +65,6 @@ function processGetCoordinates(currentLocation) {
     });
 }
 
-
 function getCoordinatesSuccess(response) {
     for (var i = 0; i < response.length; i++) {
         let pointer = Pointer();
@@ -90,7 +85,6 @@ function getCoordinatesSuccess(response) {
     // poolbegEntity();
 }
 
-
 function poolbegEntity() {
     let poolbegModel = Pointer();
 
@@ -109,7 +103,6 @@ function poolbegEntity() {
     createEntity(poolbegModel);
 }
 
-
 function createEntity(model, autoscale) {
     let scene = document.querySelector('a-scene');
 
@@ -121,21 +114,7 @@ function createEntity(model, autoscale) {
         scene.appendChild(textEl);
         refresh(entityEl, textEl, autoscale);
     }
-    
-
-
-    //let textEl = createTextElement({
-    //    info: model.info,
-    //    scale: model.text_scale,
-    //    location: model.location
-    //});
-
-    // scene.appendChild(entityEl);
-    
-
-    // refresh(entityEl, textEl, autoscale);
 }
-
 
 function refresh(entity, text, autoscale) {
     var intervalId =
@@ -163,7 +142,6 @@ function refresh(entity, text, autoscale) {
     entity.setAttribute('intervalId', intervalId);
 }
 
-
 function showSuccess(entity, text) {
     let star = Star();
     entity.setAttribute('scale', star.scale);
@@ -173,7 +151,6 @@ function showSuccess(entity, text) {
 
     text.remove();
 }
-
 
 function setScale(model, scale) {
     model.setAttribute('scale', scale + ' ' + scale + ' ' + scale + ' ');

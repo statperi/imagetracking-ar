@@ -57,9 +57,6 @@ AFRAME.registerComponent("gesture-handler", {
                 this.data.maxScale
             );
 
-        console.log('spreadChange, startSpread: ', event.detail.spreadChange, event.detail.startSpread)
-        console.log('scale factor: ', this.scaleFactor)
-
             this.el.object3D.scale.x = this.scaleFactor * this.initialScale.x;
             this.el.object3D.scale.y = this.scaleFactor * this.initialScale.y;
             this.el.object3D.scale.z = this.scaleFactor * this.initialScale.z;
