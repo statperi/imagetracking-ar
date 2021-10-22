@@ -159,10 +159,10 @@ function showSuccess(entity, text) {
     let scene = document.querySelector('a-scene');
 
     let star = Star();
-    star.location = entity.getAttribute('gps-entity-place');
+    // star.location = entity.getAttribute('gps-entity-place');
 
-    let element = createEntityElement(star);
-    scene.appendChild(element);
+    //let element = createEntityElement(star);
+    //scene.appendChild(element);
 
 
     entity.setAttribute('scale', star.scale);
