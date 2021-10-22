@@ -78,7 +78,7 @@ function getCoordinatesSuccess(response) {
             longitude: response[i].longitude
         };
 
-        pointer.info = pointer.text.info = response[i].name + '\n' + response[i].description;
+        pointer.info = pointer.text.text = response[i].name + '\n' + response[i].description;
         
         createEntity(pointer, true);
     }
