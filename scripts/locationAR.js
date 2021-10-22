@@ -115,6 +115,7 @@ function createEntity(model, autoscale) {
     if (model.text) {
         let textEl = createTextElement(model.text);
         scene.appendChild(textEl);
+        refresh(entityEl, textEl, autoscale);
     }
     
 
@@ -128,7 +129,7 @@ function createEntity(model, autoscale) {
     // scene.appendChild(entityEl);
     
 
-    refresh(entityEl, textEl, autoscale);
+    // refresh(entityEl, textEl, autoscale);
 }
 
 
