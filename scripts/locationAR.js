@@ -165,13 +165,14 @@ function showSuccess(entity, text) {
     //scene.appendChild(element);
 
 
-    entity.setAttribute('scale', star.scale);
+    entity.setAttribute('scale', '40 40 40');
+    // entity.setAttribute('scale', star.scale);
     entity.setAttribute('gltf-model', star.url);
     entity.setAttribute('info', star.info);
     entity.removeAttribute('gesture-handler');
 
 
-    entity.remove(); // remove current models
+    // entity.remove(); // remove current models
     text.remove();
 }
 
