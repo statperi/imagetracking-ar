@@ -10,18 +10,8 @@ var Pointer = () => {
         text_scale: '40 40 40',
         // rotation: '0 0 0',
         // position: '0 30 0',
+        lookAt: '[camera]',
         info: 'Pin'
-    }
-}
-
-var Firework = () => {
-    return {
-        code: 'firework',
-        url: './assets/firework/scene.gltf',
-        scale: '2 2 2',
-        rotation: '0 0 0',
-        // position: '0 30 0',
-        info: 'Firework'
     }
 }
 
@@ -32,6 +22,7 @@ var Star = () => {
         scale: '5 5 5',
         rotation: '0 0 0',
         // position: '0 30 0',
+        lookAt: '[camera]',
         info: 'Star'
     }
 }
@@ -156,23 +147,12 @@ function refresh(entity, text, autoscale) {
 
 
 function showSuccess(entity, text) {
-    let scene = document.querySelector('a-scene');
-
     let star = Star();
-    // star.location = entity.getAttribute('gps-entity-place');
-
-    //let element = createEntityElement(star);
-    //scene.appendChild(element);
-
-
-    entity.setAttribute('scale', '40 40 40');
-    // entity.setAttribute('scale', star.scale);
+    entity.setAttribute('scale', star.scale);
     entity.setAttribute('gltf-model', star.url);
     entity.setAttribute('info', star.info);
     entity.removeAttribute('gesture-handler');
 
-
-    // entity.remove(); // remove current models
     text.remove();
 }
 
@@ -205,9 +185,10 @@ function createEntityElement(config) {
     element.setAttribute('success', 'false');
     element.setAttribute('gps-entity-place', `latitude: ${config.location.latitude}; longitude: ${config.location.longitude};`);
 
-    element.setAttribute('look-at', '[camera]');
-
-    if (config.gestureConfig) {
+    if (config.lookAt == '[camera]') {
+        element.setAttribute('look-at', '[camera]');
+    }
+    else if (config.gestureConfig) {
         element.setAttribute('gesture-handler', config.gestureConfig);
         element.classList.add('clickable');
     }
